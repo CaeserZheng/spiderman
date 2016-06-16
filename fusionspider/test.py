@@ -3,6 +3,7 @@ __author__ = 'caeser'
 import cdnspider
 import pprint
 import  json
+from resolvespider import *
 
 
 
@@ -20,11 +21,15 @@ op=cdnspider.SpiderMan()
 #rs = op.register("tiny.china.qiniu.qingcdn.com",POST=True)
 #print rs
 
-rs = op.checkip("14.152.93.58")
-print rs[2]
+rs = checkip("125.39.59.19")
 
-rs = op.regionalip("wsall.qiniu.vod.wscdns.com","电信","北京")
-print rs
+#print "CDN服务提供商:"+str(cdn)
+
+
+
+
+#rs = op.regionalip(cname="wsall.qiniu.vod.wscdns.com")
+#print rs
 '''
 #op.cname("tiny.china.qiniu.cloud.cdntip.com")
 rs= op.cname("tiny4.china.line.qiniudns.com")

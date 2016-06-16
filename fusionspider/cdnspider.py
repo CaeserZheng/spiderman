@@ -1,7 +1,6 @@
 #-.- coding:utf-8 -.-
 
 from qiniu import Auth
-import http
 import requests
 import json
 '''
@@ -78,22 +77,21 @@ class SpiderMan():
 
     def regionalip(self,cname,isp=None,province=None):
 
+        Content_Type="application/json"
         url = "http://"+Host+"/v1/regionalip/"
         body={}
-        body["cname"]=cname
+        body['cname']=cname
         if isp is not None:
-            body["isp"]=isp
+            body['isp']=isp
         if province is not None:
-            body["province"]=province
+            body['province']=province
 
-        body = json.dumps(body)
-        #print body
-        #print type(body)
-        #print body
-        token = self.op.token_of_request(url,body=body)
+        #body = json.dumps(body)
+
+        token = self.op.token_of_request(url,body=body,content_type=Content_Type)
         token="QBox " + token
         header={'Authorization':str(token)}
-        re=requests.post(url,data=body,headers = header)
+        re=requests.post(url,data=json.dumps(body),headers=header)
         #return  http.get(url,headers=header)
         return re.status_code,re.headers,re.text
 
