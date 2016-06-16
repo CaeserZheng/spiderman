@@ -40,6 +40,25 @@ class SpiderMan():
         else:
             raise ValueError("注册/删除 CNAME")
 
+    def searchCname(self,cname,sync=False):
+
+        '''
+        查询某条CNAME的区域分布
+        :param cname:
+        :param sync: 默认异步
+        :return:区分分布
+        '''
+        url="http://" + Host + "/v1/cname/" + cname
+        if sync:
+            url = url + "?sync=true"
+
+        token=self.op.token_of_request(url)
+
+        token="QBox " + token
+        header={'Authorization':str(token)}
+        re=requests.get(url,headers = header)
+        #return  http.get(url,headers=header)
+        return re.status_code,re.headers,re.text
 
     def checkip(self,ip):
         '''
@@ -68,8 +87,8 @@ class SpiderMan():
             body["province"]=province
 
         body = json.dumps(body)
-        print body
-        print type(body)
+        #print body
+        #print type(body)
         #print body
         token = self.op.token_of_request(url,body=body)
         token="QBox " + token
@@ -79,25 +98,6 @@ class SpiderMan():
         return re.status_code,re.headers,re.text
 
 
-    def cname(self,cname,sync=False):
-        '''
-        查询某条CNAME的区域分布
-        :param cname:
-        :param sync: 默认异步
-        :return:区分分布
-        '''
-
-        url="http://" + Host + "/v1/cname/" + cname
-        if not sync:
-            url = url + "?sync=true"
-
-        token=self.op.token_of_request(url)
-
-        token="QBox " + token
-        header={'Authorization':str(token)}
-        re=requests.get(url,headers = header)
-        #return  http.get(url,headers=header)
-        return re.status_code,re.headers,re.text
 
 
     def dnsmap(self):

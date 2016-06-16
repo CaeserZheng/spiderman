@@ -1,6 +1,6 @@
 #-.- coding:utf-8 -.-
 __author__ = 'caeser'
-import utils
+import cdnspider
 import pprint
 import  json
 
@@ -12,16 +12,19 @@ cdn5.video.cztv.com  CNAME iduwo5h.qiniudns.com
 cdn5.static.cztv.com CNAME iduwo5e.qiniudns.com
 '''
 
-op=utils.SpiderMan()
+op=cdnspider.SpiderMan()
 
+
+
+#print op.searchCname("vod3.china.line.qiniudns.com")
 #rs = op.register("tiny.china.qiniu.qingcdn.com",POST=True)
 #print rs
 
-rs = op.checkip("183.131.160.111")
+rs = op.checkip("14.152.93.58")
 print rs[2]
 
-#rs = op.regionalip("wsall.qiniu.dl.wscdns.com","电信","北京")
-#print rs
+rs = op.regionalip("wsall.qiniu.vod.wscdns.com","电信","北京")
+print rs
 '''
 #op.cname("tiny.china.qiniu.cloud.cdntip.com")
 rs= op.cname("tiny4.china.line.qiniudns.com")
