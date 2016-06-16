@@ -9,7 +9,7 @@ import dospider
 
 def main():
     try:
-        options, args = getopt.getopt(sys.argv[1:], "hi:c:m", ["help","ip","cdn","map"])
+        options, args = getopt.getopt(sys.argv[1:], "hi:c:dm", ["help","ip","cdn","map"])
     except getopt.GetoptError as err:
         # print help information and exit:
         print str(err)  # will print something like "option -a not recognized"

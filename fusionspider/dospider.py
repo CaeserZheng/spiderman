@@ -64,11 +64,10 @@ def checkcdnip(ip,isdetail=False):
 
     cdninfo = cdn[s["cdninfo"]]
     region = taobao_ip.checkip(ip)
-    print "检测IP:\t" + str(ip)
-    print "========================================="
-    print "线路归属:\t" + str(lines)
-    print "CDN服务商:\t" + str(cdninfo)
-    print "地域归属:\t" + region
+    print("{0:^15} {0:^6} {0:^50}".format("检测IP","CDN服务商","地域归属"))
+    print("--------------- ---- {0:-<50}".format(""))
+    print("{0:15} {0:6} {0:50}".format(ip,str(cdninfo),region))
+
 
 def checkip(ip):
 

@@ -17,8 +17,7 @@ def checkip(ip):
     data = rs["data"]
     value = ""
     if code == 0:
-        value = "Code: " + str(code) + "\t" \
-                "Country: " +data["country"] + "\t" \
+        value = "Country: " +data["country"] + "\t" \
                 "Area: " + data["area"] + "\t" \
                 "Region: " + data["region"] + "\t" \
                 "City: " + data["city"] + "\t" \
